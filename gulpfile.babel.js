@@ -54,7 +54,7 @@ gulp.task('html', ['views', 'styles'], () => {
   return gulp.src(['app/*.html', '.tmp/*.html'])
     .pipe(assets)
     .pipe($.if('*.js', $.uglify()))
-    .pipe($.if('*.css', $.minifyCss({compatibility: '*'})))
+    .pipe($.if('*.css', $.minifyCss({compatibility: '*', processImport: false})))
     .pipe(assets.restore())
     .pipe($.useref())
     .pipe($.if('*.html', $.minifyHtml({conditionals: true, loose: true})))
@@ -78,6 +78,9 @@ gulp.task('images', () => {
 });
 
 gulp.task('fonts', () => {
+  gulp.src('bower_components/semantic/dist/**/*.{eot,svg,ttf,woff,woff2}')
+    .pipe(gulp.dest('dist/styles'));
+
   return gulp.src(require('main-bower-files')({
     filter: '**/*.{eot,svg,ttf,woff,woff2}'
   }).concat('app/fonts/**/*'))
@@ -165,7 +168,7 @@ gulp.task('wiredep', () => {
     .pipe(gulp.dest('app'));
 });
 
-gulp.task('build', ['lint', 'html', 'images', 'fonts', 'extras'], () => {
+gulp.task('build', [ 'html', 'images', 'fonts', 'extras'], () => {
   return gulp.src('dist/**/*').pipe($.size({title: 'build', gzip: true}));
 });
 
