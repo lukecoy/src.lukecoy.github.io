@@ -1,0 +1,82 @@
+mixin skill(icon, header, subheader)
+  .item.desktop
+    i.icon(class=icon)                 
+    .content
+      .header= header                 
+      .description= subheader
+  .mobile
+    .ui.icon.header
+      i.icon(class=icon)                       
+      .content
+        .sub.header= subheader
+
+doctype html.no-js
+head
+  meta(charset='utf-8')  
+  title Luke Coy - Software Engineer     
+  meta(name='description', content='')     
+  meta(name='viewport', content='width=device-width')     
+  link(rel='shortcut icon', href='/favicon.ico')
+  
+  // build:css(.) styles/vendor.css
+  // bower:css
+  link(rel='stylesheet', href='/bower_components/semantic/dist/semantic.css')
+  // endbower
+  // endbuild
+
+  // build:css(.) styles/main.css
+  link(rel='stylesheet' href='styles/main.css')
+  // endbuild
+
+  body.pushable
+    .ui.bottom.demo.inverted.three.item.labeled.icon.sidebar.menu
+      a.item(href='https://github.com/lukecoy')
+        i.github.square.icon 
+        | GitHub           
+      a.item(href='https://www.linkedin.com/pub/luke-coy/41/11a/a52')
+        i.linkedin.square.icon 
+        | LinkedIn           
+      a.item(href='https://github.com/lukecoy/resume/raw/master/lukecoyresume.pdf')
+        i.file.text.outline.icon 
+        | Resume
+    .pusher
+      #all-content.all-content: .main-container
+          h1 Luke Coy         
+          .ui.divider         
+          .ui.stackable.two.column.grid
+
+            .column.about
+              h3 About              
+              .ui.two.column.grid
+                .column.aboutme
+                  span lover of spaghetti, crazy taxi, and simple things  
+                    br 
+                    | I also code          
+                .column.mepic
+                  img.ui.small.image(src='./images/me.jpg')       
+            
+            .column.favorites
+              h3 Favorites            
+              .ui.two.column.grid
+                .column: .ui.list
+                    +skill('code', 'language', 'Java, Coffeescript, Sass, Jade')
+                    +skill('desktop', 'client', 'Backbone, Jasmine, Bootstrap, Require')
+                .column: .ui.list
+                    +skill('server', 'server', 'JDBI, Guice, Guava, Jersey, Jackson')
+                    +skill('terminal', 'utility', 'Grunt, Maven, Bower, NPM')
+
+          .ui.divider
+          .ui.red.basic.vertical.animated.button.links
+            .hidden.content links
+            .visible.content: i.linkify.icon
+    
+    // build:js(.) scripts/vendor.js
+    // bower:js
+    script(src='/bower_components/jquery/dist/jquery.js')
+    script(src='/bower_components/semantic/dist/semantic.js')
+    // endbower
+    // endbuild
+    
+    // build:js(.) scripts/main.js
+    script(src='scripts/main.js')
+    // endbuild

@@ -1,0 +1,57 @@
+/* Customize container */
+@media screen and (device-aspect-ratio: 40/71), (min-width: 768px) {
+  .main-container {
+    max-width: 730px;
+  }
+}
+
+@media screen and (device-aspect-ratio: 40/71), (max-width: 767px) {
+  .pusher { 
+    .all-content#all-content {
+      padding-top: 15px;
+      padding-bottom: 15px;
+      top:0%;
+      transform: translateY(0%);
+
+      .ui.two.column.grid.stackable {
+        .column:not(:last-child) {
+          padding-bottom: 0 !important;
+        }
+        .column.about, .column.favorites {
+          padding-top: 2rem !important;
+        }
+      }
+
+      .column .ui.list {
+        .mobile:not(:last-child) {
+          padding-bottom: 1rem; 
+        }
+
+        .mobile .ui.icon.header { 
+          display:block;
+        }
+
+        .item.desktop {
+          display:none;
+        }
+      }
+
+      h3 {
+        text-align: center;
+        margin-bottom: 2rem;
+      }
+
+      .column.aboutme  {
+        text-align: center;
+      }
+
+      .column.mepic img {
+        margin: auto;
+      }
+
+      h1 {
+        text-align: center;
+      }
+    }
+  }
+}
